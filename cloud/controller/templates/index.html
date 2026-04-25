@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Private Cloud</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, #1f1f1f, #2c2c2c, #3a3a3a);
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        .upload-box {
+            text-align: center;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        input[type="file"] {
+            margin: 15px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .upload-btn {
+            background: #667eea;
+            color: white;
+        }
+
+        .upload-btn:hover {
+            background: #5a67d8;
+        }
+
+        .file-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .file-table th {
+            background: #f4f6f8;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .file-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .download-btn {
+            background: #38a169;
+            color: white;
+        }
+
+        .download-btn:hover {
+            background: #2f855a;
+        }
+
+        .delete-btn {
+            background: #e53e3e;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background: #c53030;
+        }
+
+        .actions button {
+            margin-right: 10px;
+        }
+
+        .no-files {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>☁️ My Private Cloud</h1>
+
+    <!-- Upload Section -->
+    <div class="upload-box">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <h3>Upload File</h3>
+            <input type="file" name="file" required><br>
+            <button class="upload-btn">Upload</button>
+        </form>
+    </div>
+
+    <!-- Files Section -->
+    <h3>Stored Files</h3>
+
+    {% if files %}
+    <table class="file-table">
+        <tr>
+            <th>File Name</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for file in files %}
+        <tr>
+            <td>{{ file }}</td>
+            <td class="actions">
+                <a href="/download/{{ file }}">
+                    <button class="download-btn">Download</button>
+                </a>
+
+                <a href="/delete/{{ file }}">
+                    <button class="delete-btn">Delete</button>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% else %}
+        <div class="no-files">No files uploaded yet</div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
