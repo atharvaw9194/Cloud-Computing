@@ -4,5 +4,11 @@
             "chunk": "R1_DSBDA.pdf_chunk_0",
             "node": "/Users/aaryaa/Desktop/Folder/SEM 6/MINI_PROJECTS/cloud/storage_nodes/node1"
         }
+    ],
+    "A3_Writeup.pdf": [
+        {
+            "chunk": "A3_Writeup.pdf_chunk_0",
+            "node": "C:\\Users\\athar\\OneDrive\\Desktop\\ccmini\\cloud\\storage_nodes/node1"
+        }
     ]
 }
